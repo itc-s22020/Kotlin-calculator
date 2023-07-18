@@ -28,6 +28,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         findViewById<Button>(R.id.btnBC).setOnClickListener(this)
         findViewById<Button>(R.id.btnAC).setOnClickListener(this)
+
+        findViewById<Button>(R.id.btnPlus).setOnClickListener(this)
+        findViewById<Button>(R.id.btnMinus).setOnClickListener(this)
+        findViewById<Button>(R.id.btnTimes).setOnClickListener(this)
+        findViewById<Button>(R.id.btnDivided).setOnClickListener(this)
     }
 
     override fun onClick(view: View) {
@@ -46,6 +51,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
             R.id.btnBC   -> sText = sText.dropLast(1)
             R.id.btnAC   -> sText = ""
+            
+            R.id.btnPlus -> sText += "+"
+            R.id.btnMinus-> sText += "-"
+            R.id.btnTimes-> sText += "×"
+            R.id.btnDivided-> sText += "÷"
+            
             
         }
         textView.text = sText
