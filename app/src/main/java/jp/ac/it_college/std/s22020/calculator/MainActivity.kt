@@ -6,13 +6,13 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 
 var sText = ""
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         window.statusBarColor = Color.LTGRAY
 
         findViewById<Button>(R.id.btnZero).setOnClickListener(this)
@@ -25,10 +25,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         findViewById<Button>(R.id.btnSeven).setOnClickListener(this)
         findViewById<Button>(R.id.btnEight).setOnClickListener(this)
         findViewById<Button>(R.id.btnNine).setOnClickListener(this)
+
+        findViewById<Button>(R.id.btnBC).setOnClickListener(this)
+        findViewById<Button>(R.id.btnAC).setOnClickListener(this)
     }
 
     override fun onClick(view: View) {
-        var textView = findViewById<TextView>(R.id.textView)
+        val textView = findViewById<TextView>(R.id.textView)
         when (view.id) {
             R.id.btnZero -> sText += "0"
             R.id.btnOne  -> sText += "1"
@@ -40,6 +43,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.btnSeven-> sText += "7"
             R.id.btnEight-> sText += "8"
             R.id.btnNine -> sText += "9"
+
+            R.id.btnBC   -> sText = sText.dropLast(1)
+            R.id.btnAC   -> sText = ""
+            
         }
         textView.text = sText
     }
