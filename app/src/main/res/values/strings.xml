@@ -19,4 +19,5 @@
     <string name="_brackets">( )</string>
     <string name="_percent">%</string>
     <string name="_divided">÷</string>
+    <string name="textview">test</string>
 </resources>
