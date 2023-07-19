@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.TextView
 
 var sText = ""
+
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -15,49 +16,35 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         window.statusBarColor = Color.LTGRAY
 
-        findViewById<Button>(R.id.btnZero).setOnClickListener(this)
-        findViewById<Button>(R.id.btnOne).setOnClickListener(this)
-        findViewById<Button>(R.id.btnTwo).setOnClickListener(this)
-        findViewById<Button>(R.id.btnThree).setOnClickListener(this)
-        findViewById<Button>(R.id.btnFour).setOnClickListener(this)
-        findViewById<Button>(R.id.btnFive).setOnClickListener(this)
-        findViewById<Button>(R.id.btnSix).setOnClickListener(this)
-        findViewById<Button>(R.id.btnSeven).setOnClickListener(this)
-        findViewById<Button>(R.id.btnEight).setOnClickListener(this)
-        findViewById<Button>(R.id.btnNine).setOnClickListener(this)
-
-        findViewById<Button>(R.id.btnBC).setOnClickListener(this)
-        findViewById<Button>(R.id.btnAC).setOnClickListener(this)
-
-        findViewById<Button>(R.id.btnPlus).setOnClickListener(this)
-        findViewById<Button>(R.id.btnMinus).setOnClickListener(this)
-        findViewById<Button>(R.id.btnTimes).setOnClickListener(this)
-        findViewById<Button>(R.id.btnDivided).setOnClickListener(this)
+        val btnList = listOf(
+            R.id.btnZero, R.id.btnOne, R.id.btnTwo, R.id.btnThree, R.id.btnFour, R.id.btnFive, R.id.btnSix, R.id.btnSeven, R.id.btnEight, R.id.btnNine,
+            R.id.btnBC, R.id.btnAC,
+            R.id.btnPlus, R.id.btnMinus, R.id.btnTimes, R.id.btnDivided
+        )
+        for (v in btnList) findViewById<Button>(v).setOnClickListener(this)
     }
 
     override fun onClick(view: View) {
         val textView = findViewById<TextView>(R.id.textView)
         when (view.id) {
             R.id.btnZero -> sText += "0"
-            R.id.btnOne  -> sText += "1"
-            R.id.btnTwo  -> sText += "2"
-            R.id.btnThree-> sText += "3"
+            R.id.btnOne -> sText += "1"
+            R.id.btnTwo -> sText += "2"
+            R.id.btnThree -> sText += "3"
             R.id.btnFour -> sText += "4"
             R.id.btnFive -> sText += "5"
-            R.id.btnSix  -> sText += "6"
-            R.id.btnSeven-> sText += "7"
-            R.id.btnEight-> sText += "8"
+            R.id.btnSix -> sText += "6"
+            R.id.btnSeven -> sText += "7"
+            R.id.btnEight -> sText += "8"
             R.id.btnNine -> sText += "9"
 
-            R.id.btnBC   -> sText = sText.dropLast(1)
-            R.id.btnAC   -> sText = ""
-            
+            R.id.btnBC -> sText = sText.dropLast(1)
+            R.id.btnAC -> sText = ""
+
             R.id.btnPlus -> sText += "+"
-            R.id.btnMinus-> sText += "-"
-            R.id.btnTimes-> sText += "×"
-            R.id.btnDivided-> sText += "÷"
-            
-            
+            R.id.btnMinus -> sText += "-"
+            R.id.btnTimes -> sText += "×"
+            R.id.btnDivided -> sText += "÷"
         }
         textView.text = sText
     }
