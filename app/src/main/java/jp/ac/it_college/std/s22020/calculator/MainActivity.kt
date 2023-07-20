@@ -20,7 +20,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.btnZero, R.id.btnOne, R.id.btnTwo, R.id.btnThree, R.id.btnFour, R.id.btnFive, R.id.btnSix, R.id.btnSeven, R.id.btnEight, R.id.btnNine,
             R.id.btnBC, R.id.btnAC,
             R.id.btnPlus, R.id.btnMinus, R.id.btnTimes, R.id.btnDivided,
-            R.id.btnDot, R.id.btnPercent
+            R.id.btnDot, R.id.btnPercent,
+            R.id.btnBrackets
         )
         for (v in btnList) findViewById<Button>(v).setOnClickListener(this)
     }
@@ -49,6 +50,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
             R.id.btnDot -> sText += "."
             R.id.btnPercent -> sText += "%"
+
+            R.id.btnBrackets -> { sText +=
+                    if (sText.isEmpty()) { "(" }
+                    else if (sText.last() == '(') { "(" }
+                    else if ( sText.count{x -> x == '('} > sText.count{y -> y == ')'}) { ")" }
+                    else { "(" }
+            }
+
         }
         textView.text = sText
     }
