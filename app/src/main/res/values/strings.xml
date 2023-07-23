@@ -17,7 +17,8 @@
     <string name="_times">×</string>
     <string name="ac">AC</string>
     <string name="_brackets">( )</string>
-    <string name="_percent">%</string>
+    <string name="_percent">▲</string>
     <string name="_divided">÷</string>
-    <string name="textview">test</string>
+    <string name="textview">0</string>
+    <string name="textLog">log</string>
 </resources>

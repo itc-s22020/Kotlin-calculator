@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 
 var sText = ""
+var logText = ""
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,7 +23,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.btnZero, R.id.btnOne, R.id.btnTwo, R.id.btnThree, R.id.btnFour, R.id.btnFive, R.id.btnSix, R.id.btnSeven, R.id.btnEight, R.id.btnNine,
             R.id.btnBC, R.id.btnAC,
             R.id.btnPlus, R.id.btnMinus, R.id.btnTimes, R.id.btnDivided,
-            R.id.btnTwoZero, R.id.btnPercent,
+            R.id.btnTwoZero, R.id.btnLog,
             R.id.btnBrackets, R.id.btnEqual
         )
         for (v in btnList) findViewById<Button>(v).setOnClickListener(this)
@@ -31,6 +32,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     @SuppressLint("SetTextI18n")
     override fun onClick(view: View) {
         val textView = findViewById<TextView>(R.id.textView)
+        val textLog = findViewById<TextView>(R.id.textLogView)
         when (view.id) {
             R.id.btnZero -> sText += "0"
             R.id.btnOne -> sText += "1"
@@ -52,7 +54,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.btnDivided -> sText += "÷"
 
             R.id.btnTwoZero -> sText += "00"
-            R.id.btnPercent -> sText += "%"
+
+            R.id.btnLog -> sText = logText
 
             R.id.btnBrackets -> { sText +=
                     if (sText.isEmpty()) { "(" }
@@ -62,11 +65,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
 
             R.id.btnEqual -> {
+                logText = sText
                 sText = try {
                     Parser(sText).expr().toString()
                 } catch (e: NumberFormatException) {
                     "Error"
                 }
+                textLog.text = logText
             }
 
         }
